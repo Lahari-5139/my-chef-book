@@ -15,13 +15,25 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.h3-content {
+  display: flex;
+  text-align: left;
+}
+
+.para {
+  text-align: center;
+  font-size: large;
+  color:saddlebrown;
+  font-weight: 600;
 }
 
 .App-link {
