@@ -1,17 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
-import Ingredients from './components/ingredients';
+import HomeScreen from './components/HomeScreen';
+import RecipeScreen from './components/RecipeScreen'; 
+// import { HashRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>ChefBook</h1>
-      </header>
-      <p className="para">Tell us your ingredients and we will suggest you recipes!</p>
-      <Ingredients/>
-      
-    </div>
+      <Router>
+        <Switch>
+      <div className="App">
+        <Route exact path="/" component={HomeScreen} /> 
+        <Route path="/recipe" component={RecipeScreen} />
+      </div>
+      </Switch>
+    </Router>
   );
 }
 

@@ -1,20 +1,28 @@
 import React, { Component } from "react";
 import '../App.css';
 import Item from "./Item";
+// import {useHistory} from 'react-router-dom';
 // import map from './Map';
+// import { hashHistory } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Ingredients extends Component{
     constructor(props) {
         super(props);
+        // const history = useHistory();
         this.state = {
             ingredients_array: [],
             ingredient_name: ""
         };
         this.statehandler = this.statehandler.bind(this);
+        this.handleClick = this.handleClick.bind(this);
       }
       statehandler(event){
         this.setState({ingredient_name: event.target.value});
         }
+        handleClick() {
+          this.props.history.push('/recipe');
+        }    
                   
       render() {
         let items = this.state.ingredients_array.map((val, key) => {
@@ -34,7 +42,7 @@ class Ingredients extends Component{
               </div>
               <div>{items}</div>
               <div>
-                <input
+                <input className='inputbox'
                     type='text'
                   onChange={this.statehandler}
                   value={this.state.ingredient_name}
@@ -43,13 +51,17 @@ class Ingredients extends Component{
                   underlineColorAndroid="transparent"
                 ></input>
               </div>
-              <button
+              <button className='button'
                 onClick={this.addItem.bind(this)}
               >
                 Add Ingredient
               </button>
                 <br/>
-              <button>get me recipe!</button>
+              <button className='button'
+              type="button"
+              onClick={this.handleClick}
+              >
+                get me recipe!</button>
             </div>
           );
     }
@@ -72,4 +84,4 @@ addItem() {
   }
 }
 
-export default Ingredients;
+export default withRouter(Ingredients);

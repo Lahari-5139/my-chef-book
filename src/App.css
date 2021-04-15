@@ -36,6 +36,17 @@
   font-weight: 600;
 }
 
+.button {
+  padding: 5pt;
+  margin: 5pt;
+  text-justify: auto;
+  text-align: center;
+}
+
+.inputbox {
+  padding: 5pt;
+}
+
 .App-link {
   color: #61dafb;
 }
