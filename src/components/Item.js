@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import '../App.css';
 
-export default class Main extends Component {
+export default class Item extends Component {
     render() {
       return (
         <div key={this.props.keyval}>
