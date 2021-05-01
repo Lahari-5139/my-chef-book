@@ -5,6 +5,7 @@ import Item from "./Item";
 // import map from './Map';
 // import { hashHistory } from 'react-router-dom';
 import { withRouter } from "react-router-dom";
+import axios from "axios";
 
 class Ingredients extends Component {
   constructor(props) {
@@ -20,7 +21,20 @@ class Ingredients extends Component {
   statehandler(event) {
     this.setState({ ingredient_name: event.target.value });
   }
-  handleClick() {
+  handleClick(event) {
+    event.preventDefault();
+    const obj = {
+      // headers: {
+      //   'Access-Control-Allow-Origin': '*',
+      //   "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+      //   "Access-Control-Allow-Credentials": true
+      // },
+      ingredients_array: this.state.ingredients_array
+    };
+    axios.post('http://localhost/Recipesbook/check.php', obj)
+    .then(res => console.log(res.data));
+    this.setState({ingredients_array: [],
+    ingredient_name: ""})
     this.props.history.push("/recipe");
   }
 
@@ -66,10 +80,7 @@ class Ingredients extends Component {
     addItem() {
         
       if (this.state.ingredient_name) {
-          
-      //   var d = new Date();
       this.state.ingredients_array.push({
-        // date: d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + d.getDate(),
         item: this.state.ingredient_name
       });
       this.setState({ ingredients_array: this.state.ingredients_array });

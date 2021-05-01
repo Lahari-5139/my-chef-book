@@ -9,11 +9,20 @@ class Recipes extends Component{
             recipes_array: [],
             recipe_name: ""
         };
+        this.handleClick = this.handleClick.bind(this);
 }
+handleClick() {
+    this.props.history.push('/instructions');
+} 
 render(){
     return(
         <div>
-            <h3>Recipes Soooon!!</h3>
+            <h3>Select a Recipe from below</h3>
+            <button className='button'
+              type="button"
+              onClick={this.handleClick}>
+                  Get Instructions
+            </button>
         </div>
     );
 }
